@@ -1,6 +1,6 @@
 <template>
+ <h1> {{ title }}</h1>
 
- {{ title }}
   <input type="text" ref="abc">
   <button @click="handleEventClick">click</button>
 <Modal/>
@@ -8,7 +8,7 @@
 
 <script>
  import Modal from "./components/Modal.vue"
- 
+
  export default {
   name: 'App',
   components:{Modal},
@@ -40,5 +40,9 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1{
+  color: #f41137;
 }
 </style>
