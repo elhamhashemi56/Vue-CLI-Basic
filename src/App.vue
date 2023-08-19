@@ -1,16 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+ {{ title }}
+  <input type="text" ref="abc">
+  <button @click="handleEventClick">click</button>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+
+  data(){
+    return{
+      title:"Hallo World"
+    }
+    
+  },
+  methods:{
+
+    handleEventClick(){
+      console.log("event");
+      console.log(this.$refs.abc); 
+      this.$refs.abc.classList.add("elham")
+    }
   }
+  
+  
 }
 </script>
 
