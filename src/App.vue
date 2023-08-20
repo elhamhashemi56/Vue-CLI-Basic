@@ -3,11 +3,18 @@
 
   <input type="text" ref="abc">
   <button @click="handleEventClick">click</button>
+  <p>Welcome ...</p>
+
+  <button @click.alt="changeModal">Show Modal(Alt)</button>
   
-  <Modal :headerProps="header"
+  <div v-if="showModal">
+    <Modal :headerProps="header"
          :textProps="text"
          theme="sale"
+         @close="changeModal"
         />
+  </div>
+  
 
 </template>
 <!-- ################################################################# -->
@@ -22,7 +29,8 @@
     return{
       title:"Hallo World",
       header:"Title Modal",
-      text:"Modal content"
+      text:"Modal content",
+      showModal:false
     }
     
   },
@@ -32,6 +40,9 @@
       console.log("event");
       console.log(this.$refs.abc); 
       this.$refs.abc.classList.add("elham")
+    },
+    changeModal(){
+      this.showModal = !this.showModal
     }
   }
   
