@@ -5,14 +5,29 @@
   <button @click="handleEventClick">click</button>
   <p>Welcome ...</p>
 
-  <button @click.alt="changeModal">Show Modal(Alt)</button>
+  <button @click.alt="changeModalProps">Show Modal(Alt)-Props</button>
+  <button @click="changeModalSlot">Show Modal-Slot</button>
   
-  <div v-if="showModal">
+  <div v-if="showModalProps">
     <Modal :headerProps="header"
-         :textProps="text"
-         theme="sale"
-         @close="changeModal"
+           :textProps="text"
+           theme="sale"
+           @close="changeModalProps"
         />
+  </div>
+
+  <div v-if="showModalSlot">
+    <Modal @close="changeModalSlot">
+      <h1>Modal With Slot</h1>
+      <p>Content Modal Slot</p>
+
+      <template v-slot:links >
+        <div class="links">
+          <a href="">Sign Up</a>
+          <a href="">More Info</a>
+        </div>
+      </template>
+    </Modal>
   </div>
   
 
@@ -30,7 +45,8 @@
       title:"Hallo World",
       header:"Title Modal",
       text:"Modal content",
-      showModal:false
+      showModalProps:false,
+      showModalSlot:false
     }
     
   },
@@ -41,8 +57,11 @@
       console.log(this.$refs.abc); 
       this.$refs.abc.classList.add("elham")
     },
-    changeModal(){
-      this.showModal = !this.showModal
+    changeModalProps(){
+      this.showModalProps = !this.showModalProps
+    },
+    changeModalSlot(){
+      this.showModalSlot =  !this.showModalSlot
     }
   }
   
@@ -63,5 +82,14 @@
 
 h1{
   color: #f41137;
+}
+
+.links a{
+  margin: 0.5rem;
+  padding: 10px;
+  text-decoration: none;
+  border: 1px solid #c6c3c3;
+  border-radius: 5px;
+  color: black;
 }
 </style>

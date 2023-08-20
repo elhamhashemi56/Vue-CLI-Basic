@@ -3,6 +3,9 @@
         <div class="modal" :class="{saleKlass: theme === 'sale' }">
             <h1>{{ headerProps }}</h1>
             <p>{{ textProps }}</p>
+
+            <slot></slot>
+            <slot name="links"></slot>
         </div>
         
     </div>
