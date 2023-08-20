@@ -3,9 +3,14 @@
 
   <input type="text" ref="abc">
   <button @click="handleEventClick">click</button>
-<Modal/>
-</template>
+  
+  <Modal :headerProps="header"
+         :textProps="text"
+         theme="sale"
+        />
 
+</template>
+<!-- ################################################################# -->
 <script>
  import Modal from "./components/Modal.vue"
 
@@ -15,7 +20,9 @@
   
   data(){
     return{
-      title:"Hallo World"
+      title:"Hallo World",
+      header:"Title Modal",
+      text:"Modal content"
     }
     
   },
@@ -31,6 +38,7 @@
   
 }
 </script>
+<!-- ################################################################# -->
 
 <style>
 #app {
