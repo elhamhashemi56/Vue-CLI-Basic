@@ -8,27 +8,27 @@
   <button @click.alt="changeModalProps">Show Modal(Alt)-Props</button>
   <button @click="changeModalSlot">Show Modal-Slot</button>
   
-  <div v-if="showModalProps">
+  <teleport to=".modals" v-if="showModalProps">
     <Modal :headerProps="header"
            :textProps="text"
            theme="sale"
            @close="changeModalProps"
         />
-  </div>
+  </teleport>
 
-  <div v-if="showModalSlot">
+  <teleport to=".modals" v-if="showModalSlot">
     <Modal @close="changeModalSlot">
       <h1>Modal With Slot</h1>
       <p>Content Modal Slot</p>
 
       <template v-slot:links >
         <div class="links">
-          <a href="">Sign Up</a>
-          <a href="">More Info</a>
+          <a href="#">Sign Up</a>
+          <a href="#">More Info</a>
         </div>
       </template>
     </Modal>
-  </div>
+  </teleport>
   
 
 </template>
@@ -71,7 +71,7 @@
 <!-- ################################################################# -->
 
 <style>
-#app {
+#app, .modals{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
